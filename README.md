@@ -4,6 +4,7 @@ Firebase Realtime Database에 등록된 CCTV(장애물) 위치에 일정 거리 
 
 (현재의 시각적 표현은 핵심 기능인 '진동 알림'을 테스트하고 검증하기 위한 목적입니다.)
 
+
 ![output (1)](https://github.com/user-attachments/assets/da37b7bf-87ae-4ce4-9cf0-40e6e63df206)
 
 🛠️ 사용된 핵심 기술
