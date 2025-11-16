@@ -68,22 +68,29 @@ Firebase Realtime Database에 등록된 CCTV(장애물) 위치에 일정 거리 
 
 3. Firebase 접근
   -> GeoHash 값이 변경될 때마다 기존 Firebase 리스너를 해제하고, 새 GeoHash에 해당하는 경로에 해당하는 파일에 접근합니다.
+   
     (subscribeToCCTVs() 메서드가 이 로직을 담당합니다.)
 
-4. 데이터 캐싱 및 거리 계산
+5. 데이터 캐싱 및 거리 계산
   -> 근접한 경로의 CCTV 데이터를 불러와 300m 이내의 CCTV만 cachedCCTVList에 저장합니다.
+   
   -> calculationExecutor (별도 스레드)가 0.1초(MIN_CALCULATION_INTERVAL)마다 cachedCCTVList의 데이터를 기반으로 현재 위치와의 거리를 Haversine 공식(haversineDistance())을 이용해 계산합니다.
+  
   -> isCalculating 플래그를 사용하여 중복 계산을 방지합니다.
 
-5. UI 및 진동 피드백
+6. UI 및 진동 피드백
   -> 계산된 거리가 4m 이하일 경우, mainHandler (메인 스레드)를 통해 UI를 업데이트(아이콘 표시, 텍스트 변경 : 테스트 용)하고 Vibrator를 실행합니다.
+   
   -> 근접 거리에 따라(4m, 2m) 진동 패턴이 달라집니다.
+   
   -> 사용자가 범위(4m)를 벗어나면 진동과 아이콘이 자동으로 중지/해제됩니다.
 
 
 
 🗄️ **Firebase 데이터베이스 구조**
-  -> 이 앱이 정상적으로 동작하기 위해 Firebase Realtime Database는 반드시 아래와 같은 Geohash 기반의 구조를 가져야 합니다. 
+
+  -> 이 앱이 정상적으로 동작하기 위해 Firebase Realtime Database는 반드시 아래와 같은 Geohash 기반의 구조를 가져야 합니다.
+  
   -> obstacles 노드 아래에 6자리 Geohash 문자열을 키(key)로 사용하고, 그 하위에 각 CCTV의 데이터를 저장합니다.
     (테스트 시 보안 규칙을 read: true, write: true로 설정합니다.)
 
