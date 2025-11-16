@@ -59,4 +59,4 @@ Firebase Realtime Database에 등록된 CCTV(장애물) 위치에 일정 거리 
 -> obstacles 노드 아래에 6자리 Geohash 문자열을 키(key)로 사용하고, 그 하위에 각 CCTV의 데이터를 저장합니다.
 (테스트 시 보안 규칙을 read: true, write: true로 설정합니다.)
 
-```json <-- (백틱 3개 + json) { "obstacles": { "9q9j6j": { "cctv_key_001": { "latitude": 37.5665, "longitude": 126.9780 }, "cctv_key_002": { "latitude": 37.5666, "longitude": 126.9781 } }, "9q9j6k": { "cctv_key_003": { "latitude": 37.5670, "longitude": 126.9790 } } } } ```
+```json { "obstacles": { "9q9j6j": { "cctv_key_001": { "latitude": 37.5665, "longitude": 126.9780 }, "cctv_key_002": { "latitude": 37.5666, "longitude": 126.9781 } }, "9q9j6k": { "cctv_key_003": { "latitude": 37.5670, "longitude": 126.9790 } } } } ```
