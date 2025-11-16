@@ -3,6 +3,7 @@
 Firebase Realtime Database에 등록된 CCTV(장애물) 위치에 일정 거리 이내로 근접할 경우 사용자에게 진동과 시각적 경고를 제공하는 안드로이드 애플리케이션입니다.
 
 (현재의 시각적 표현은 핵심 기능인 '진동 알림'을 테스트하고 검증하기 위한 목적입니다.)
+![output (1)](https://github.com/user-attachments/assets/da37b7bf-87ae-4ce4-9cf0-40e6e63df206)
 
 🛠️ 사용된 핵심 기술
 - 언어: Java
@@ -59,7 +60,8 @@ Firebase Realtime Database에 등록된 CCTV(장애물) 위치에 일정 거리 
 -> obstacles 노드 아래에 6자리 Geohash 문자열을 키(key)로 사용하고, 그 하위에 각 CCTV의 데이터를 저장합니다.
 (테스트 시 보안 규칙을 read: true, write: true로 설정합니다.)
 
-```json {
+```json
+{
   "obstacles": {
     "9q9j6j": {
       "cctv_key_001": {
@@ -78,4 +80,5 @@ Firebase Realtime Database에 등록된 CCTV(장애물) 위치에 일정 거리 
       }
     }
   }
-} ```
+}
+```
